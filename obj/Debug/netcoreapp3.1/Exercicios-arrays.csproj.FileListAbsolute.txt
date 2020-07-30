@@ -1,0 +1,13 @@
+C:\Users\Usuario\Entra21\Exercicios-arrays\bin\Debug\netcoreapp3.1\Exercicios-arrays.exe
+C:\Users\Usuario\Entra21\Exercicios-arrays\bin\Debug\netcoreapp3.1\Exercicios-arrays.deps.json
+C:\Users\Usuario\Entra21\Exercicios-arrays\bin\Debug\netcoreapp3.1\Exercicios-arrays.runtimeconfig.json
+C:\Users\Usuario\Entra21\Exercicios-arrays\bin\Debug\netcoreapp3.1\Exercicios-arrays.runtimeconfig.dev.json
+C:\Users\Usuario\Entra21\Exercicios-arrays\bin\Debug\netcoreapp3.1\Exercicios-arrays.dll
+C:\Users\Usuario\Entra21\Exercicios-arrays\bin\Debug\netcoreapp3.1\Exercicios-arrays.pdb
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.csprojAssemblyReference.cache
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.AssemblyInfoInputs.cache
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.AssemblyInfo.cs
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.dll
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.pdb
+C:\Users\Usuario\Entra21\Exercicios-arrays\obj\Debug\netcoreapp3.1\Exercicios-arrays.genruntimeconfig.cache
