@@ -55,94 +55,118 @@ namespace Exercicios_arrays
 
                 static void exercicio1()
                 {
-                    System.Console.WriteLine("1. Leia dois arrays A e B com 15 elementos. Criai um array C, onde cada elemento de C é a subtração do elemento de A com B");
-                    int counter = 0;
+                    System.Console.WriteLine("1. Leia dois arrays A e B com 15 elementos. Criar um array C, onde cada elemento de C é a subtração do elemento de A com B");
                     var listA = new int[15];
                     var listB = new int[15];
                     var listC = new int[15];
  
-                    while (counter <= 14) 
+                    for (int i = 0; i < 15; i++) 
                     {
-                        Console.Write($"Digite o {counter+1}º número da lista A: ");
-                        listA[counter] = Int32.Parse(Console.ReadLine());
-                        Console.Write($"Digite o {counter+1}º número da lista B: ");
-                        listB[counter] = Int32.Parse(Console.ReadLine());
-                        listC[counter] = listA[counter] - listB[counter];
-                        counter++;
-                    }
-                  
-                    Console.Write("\nLista A = ");
-                    foreach(var item in listA)
-                    {
-                        Console.Write($"{item.ToString()} ");
-                    }
-                    
-                    Console.Write("\nLista B = ");
-                    foreach(var item in listB)
-                    {
-                        Console.Write($"{item.ToString()} ");
-                    }                   
+                        try
+                        {
+                            Console.Write($"Digite o {i+1}º número da lista A: ");
+                            listA[i] = Int32.Parse(Console.ReadLine());
+                            Console.Write($"Digite o {i+1}º número da lista B: ");
+                            listB[i] = Int32.Parse(Console.ReadLine());
+                            listC[i] = listA[i] - listB[i];
+                        }
+                        catch (System.Exception)
+                        {
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
+                    }                  
                     
                     Console.Write("\nLista C = ");
                     foreach(var item in listC)
                     {
-                        Console.Write($"{item.ToString()} ");
+                        Console.Write($"{item}  ");
                     }
                     System.Console.WriteLine("\n");
                 }
 
 
+
                 static void exercicio2()
                 {
                     System.Console.WriteLine("2. Ler um array com 10 inteiros e mostrar os números na ordem direta e inversa a que foram lidos");
-                    int counter = 0;
                     var list = new int[10];
         
-                    while (counter <= 9) 
+                    for (int i = 0; i < 10; i++) 
                     {
-                        Console.Write($"Digite o {counter+1}º número: ");
-                        list[counter] = Int32.Parse(Console.ReadLine());
-                        counter++;
+                        try
+                        {
+                            Console.Write($"Digite o {i+1}º número: ");
+                            list[i] = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (System.Exception)
+                        {
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
                     }
 
-                    int[] orderedList = list.OrderBy(i => i).ToArray();
+                    Array.Sort(list);
                     Console.WriteLine("\nOs numeros em ordem crescente são:");
-                    foreach (int termo in orderedList) 
+                    foreach (int item in list) 
                     {
-                        Console.WriteLine(termo);
+                        Console.Write($"{item}  ");
                     }
+                    System.Console.WriteLine("");
 
-                    int[] reverseList = list.OrderByDescending(i => i).ToArray();
+                    Array.Sort(list);
+                    Array.Reverse(list);
                     Console.WriteLine("\nOs numeros em ordem decrescente são:");
-                    foreach (int termo in reverseList) 
+                    foreach (int item in list) 
                     {
-                        Console.WriteLine(termo);
+                        Console.Write($"{item}  ");
                     }
+                    System.Console.WriteLine("");
                 }
+
 
 
                 static void exercicio3()
                 {
                     System.Console.WriteLine("3. Leia 10 elementos e armazene em um array A. Em seguida, peça um número qualquer e pesquise no array se ele existe. Caso, seja verdade imprima a mensagem: “O número existe no array” , caso contrário “Número inexistente”.");
-                    int counter = 0;
-                    var list = new int[10];
-                            
-                    while (counter <= 9) 
+                    var listA = new int[10];
+                    bool searchResult = false;
+                    int? searchNumber = null;
+                                            
+                    for (int i = 0; i < 10; i++) 
                     {
-                        Console.Write($"Digite o {counter+1}º número: ");
-                        list[counter] = Int32.Parse(Console.ReadLine());
-                        counter++;
+                        try
+                        {
+                            Console.Write($"Digite o {i+1}º número: ");
+                            listA[i] = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (System.Exception)
+                        {
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
                     }
 
-                    Console.Write("Insira um número a ser pesquisado: ");
-                    int searchNumber = Int32.Parse(Console.ReadLine());
-                    bool searchResult = false;
-
-                    foreach (int termo in list)
+                    Console.Write("\nInsira um número a ser pesquisado: ");
+                    while (true)
+                    {
+                        try
+                        {
+                            searchNumber = Int32.Parse(Console.ReadLine());
+                            break;
+                        }
+                        catch (System.Exception)
+                        {
+                            Console.Write("Erro. Um item inválido foi inserido. Insira um número inteiro: ");
+                        }
+                    }
+                    
+                    foreach (int termo in listA)
                     {
                         if (termo == searchNumber)
                         {
                             searchResult = true;
+                            System.Console.WriteLine($"\n{searchNumber} se encontra na lista!\n");
                             break;
                         }
                         else
@@ -151,66 +175,68 @@ namespace Exercicios_arrays
                         }
                     }
 
-                    if (searchResult == true)
+                    if (searchResult == false)
                     {
-                        System.Console.WriteLine($"{searchNumber} se encontra na lista!");
-                    }
-                    else
-                    {
-                        System.Console.WriteLine($"{searchNumber} NÃO se encontra na lista!");
+                        System.Console.WriteLine($"\n{searchNumber} NÃO se encontra na lista!\n");
                     }
                 }
+
 
 
                 static void exercicio4()
                 {
                     System.Console.WriteLine("4. Leia dois arrays A e B com 10 elementos.  Em seguida, compare os arrays e verifique se os mesmos são iguais ou diferentes.");
-                    int counter = 0;
                     var listA = new int[10];
                     var listB = new int[10];
-                    var listC = new int[10];
+                    bool areEquals = true;
  
-                    while (counter <= 9) 
+                    for (int i = 0; i < 10; i++) 
                     {
-                        Console.Write($"Digite o {counter+1}º número da lista A: ");
-                        listA[counter] = Int32.Parse(Console.ReadLine());
-
-                        counter++;
-                    }
-                  
-                    Console.Write("\nLista A = ");
-                    foreach(var item in listA)
-                    {
-                        Console.Write($"{item.ToString()} ");
-                    }
-                    
-                    Console.Write("\nLista B = ");
-                    foreach(var item in listB)
-                    {
-                        Console.Write($"{item.ToString()} ");
-                    }
-
-                    bool compareAB = true;
-                    foreach(var item in listC)
-                    {
-                        if (item == 0)
+                        try
                         {
-                            compareAB = true;
+                            Console.Write($"Digite o {i+1}º número da lista A: ");
+                            listA[i] = Int32.Parse(Console.ReadLine());
                         }
-                        else
+                        catch (System.Exception)
                         {
-                            compareAB = false;
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
+                    }
+                    System.Console.WriteLine("");
+
+                    for (int i = 0; i < 10; i++) 
+                    {
+                        try
+                        {
+                            Console.Write($"Digite o {i+1}º número da lista B: ");
+                            listB[i] = Int32.Parse(Console.ReadLine());
+                        }
+                        catch (System.Exception)
+                        {
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
+                    }
+
+                    Array.Sort(listA);
+                    Array.Sort(listB);
+                    for(int j = 0; j < 10; j++)
+                    {
+                        if (listA[j] != listB[j])
+                        {
+                            areEquals = false;
                             break;
                         }
                     }
 
-                    if (compareAB == true)
+                    if (areEquals == true)
                     {
-                        System.Console.WriteLine("\nLISTAS SÃO IGUAIS");
+                        System.Console.WriteLine("\nLISTAS SÃO IGUAIS\n");
                     }
                     else
                     {
-                        System.Console.WriteLine("\nLISTAS SÃO DIFERENTES");
+                        System.Console.WriteLine("\nLISTAS SÃO DIFERENTES\n");
                     }
                 }
 
@@ -218,7 +244,6 @@ namespace Exercicios_arrays
                 static void exercicio5()
                 {
                     System.Console.WriteLine("Leia um array A com 15 elementos, e calcule a média aritmética, em seguida, diga quantos dos elementos lidos estão abaixo, acima e na média.");
-                    int counter = 0;
                     var list = new double[15];
                     var number = 0.0;
                     double sum = 0;
@@ -226,15 +251,23 @@ namespace Exercicios_arrays
                     int aboveAverage = 0;
                     int underAverage = 0;
 
-                    while (counter <= 14)
+                    for (int i = 0; i < 15; i++)
                     {
-                        Console.Write($"Digite o {counter+1}º número da lista: ");
-                        number = double.Parse(Console.ReadLine());
-                        list[counter] = number;
-                        sum += number;
-                        counter++;
+                        try
+                        {
+                            Console.Write($"Digite o {i+1}º número da lista: ");
+                            number = double.Parse(Console.ReadLine());
+                            list[i] = number;
+                            sum += number;
+                        }
+                        catch (System.Exception)
+                        {
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
+                        
                     }
-                    double average = sum/counter;
+                    double average = sum/15;
 
                     foreach (var item in list)
                     {
@@ -246,7 +279,7 @@ namespace Exercicios_arrays
                         {
                             onAverage++;
                         }
-                        else if (item < average)
+                        else
                         {
                             underAverage++;
                         } 
@@ -257,57 +290,56 @@ namespace Exercicios_arrays
                 }
 
 
+
                 static void exercicio6()
                 {
                     System.Console.WriteLine("6. Leia um array A com 12 elementos. Após sua leitura, colocar os seus elementos em ordem crescente. Depois ler um array B também com doze elementos, colocar os elementos de B em ordem decrescente. Construir um array C, onde cada elemento de C é a soma do elemento correspondente de A com b. Colocar em ordem crescente a matriz C e apresentar os seus valores.");
-                    int counter = 0;
                     var listA = new int[12];
                     var listB = new int[12];
                     var listC = new int[12];
  
-                    while (counter <= 11)
+                    for (int i = 0; i < 12; i++)
                     {
-                        Console.Write($"Digite o {counter+1}º número da lista A: ");
-                        listA[counter] = Int32.Parse(Console.ReadLine());
-                        Console.Write($"Digite o {counter+1}º número da lista B: ");
-                        listB[counter] = Int32.Parse(Console.ReadLine());
-                        counter++;
+                        Console.Write($"Digite o {i+1}º número da lista A: ");
+                        listA[i] = Int32.Parse(Console.ReadLine());
+                        Console.Write($"Digite o {i+1}º número da lista B: ");
+                        listB[i] = Int32.Parse(Console.ReadLine());
                     }
 
-                    int[] orderedListA = listA.OrderBy(i => i).ToArray();
-                    int[] orderedListB = listB.OrderByDescending(i => i).ToArray();                  
+                    Array.Sort(listA);
+                    Array.Sort(listB);
+                    Array.Reverse(listB);
 
-                    int counterC = 0;
-                    while (counterC <= 11)
+                    for (int i = 0; i < 12; i++)
                     {
-                        listC[counterC] = orderedListA[counterC] + orderedListB[counterC];
-                        counterC++;
+                        listC[i] = listA[i] + listB[i];
                     }
-                    int[] orderedListC = listC.OrderBy(i => i).ToArray();
+                    Array.Sort(listC);
 
                     Console.Write("Lista A: ");
-                    foreach (var item in orderedListA)
+                    foreach (var item in listA)
                     {
                         Console.Write($"{item}, ");
                     }
                     System.Console.WriteLine("");
                     
                     Console.Write("Lista B: ");
-                    foreach (var item in orderedListB)
+                    foreach (var item in listB)
                     {
                         Console.Write($"{item}, ");
                     }
                     System.Console.WriteLine("");
 
                     Console.Write("Lista C: ");
-                    foreach (var item in orderedListC)
+                    foreach (var item in listC)
                     {
                         Console.Write($"{item}, ");
                     }
                     System.Console.WriteLine("");
                 }
-            }
-            System.Console.WriteLine("APLICAÇÃO ENCERRADA.");     
+
+                System.Console.WriteLine("APLICAÇÃO ENCERRADA.");
+            }   
         }
     }
 }
