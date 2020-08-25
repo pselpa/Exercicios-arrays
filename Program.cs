@@ -1,73 +1,51 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Exercicios_arrays
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)   // ALTERAR MENU E QUESTÕES
         {
             // MENU PRINCIPAL DOS EXERCÍCIOS
-            var mainOption = "";
-                       
-            while (mainOption != "0")
+
+            var exercises = new List<Action>()
             {
-                System.Console.WriteLine("*** MENU PRINCIPAL ***");
-                System.Console.WriteLine("Digite um número de 1 a 6 para escolher o exercício. Digite 0 para sair.");
-                mainOption = System.Console.ReadLine();
-                
-                if (mainOption == "1")
-                {
-                    System.Console.WriteLine("Selecionado o exercício 1\n");
-                    exercicio1();
-                }
-                
-                else if (mainOption == "2")
-                {
-                    System.Console.WriteLine("Selecionado o exercício 2\n");
-                    exercicio2();
-                }
+                exercicio1,
+                exercicio2,
+                exercicio3,
+                exercicio4,
+                exercicio5,
+                exercicio6,
+            };
 
-                else if (mainOption == "3")
-                {
-                    System.Console.WriteLine("Selecionado o exercício 3\n");
-                    exercicio3();
-                }
-
-                else if (mainOption == "4")
-                {
-                    System.Console.WriteLine("Selecionado o exercício 4\n");
-                    exercicio4();
-                }
-
-                else if (mainOption == "5")
-                {
-                    System.Console.WriteLine("Selecionado o exercício 5\n");
-                    exercicio5();
-                }
-
-                else if (mainOption == "6")
-                {
-                    System.Console.WriteLine("Selecionado o exercício 6\n");
-                    exercicio6();
-                }
+            Console.Write("Escolha entre os exercícios 1 a 6: ");
+            
+            var input = Int32.Parse(Console.ReadLine());
+            exercises[input-1]();
 
 
-                static void exercicio1()
+            static void exercicio1()
                 {
                     System.Console.WriteLine("1. Leia dois arrays A e B com 15 elementos. Criar um array C, onde cada elemento de C é a subtração do elemento de A com B");
                     var listA = new int[15];
                     var listB = new int[15];
                     var listC = new int[15];
+                    var inputA = "";
+                    var inputB = "";
  
                     for (int i = 0; i < 15; i++) 
                     {
+                        Console.Write($"Digite o número {i+1}/15 da lista A: ");
+                        inputA = Console.ReadLine();
+                        Console.Write($"Digite o número {i+1}/15 da lista B: ");
+                        inputB = Console.ReadLine();
+                            
                         try
                         {
-                            Console.Write($"Digite o {i+1}º número da lista A: ");
-                            listA[i] = Int32.Parse(Console.ReadLine());
-                            Console.Write($"Digite o {i+1}º número da lista B: ");
-                            listB[i] = Int32.Parse(Console.ReadLine());
+                            listA[i] = Int32.Parse(inputA);
+                            listB[i] = Int32.Parse(inputB);
                             listC[i] = listA[i] - listB[i];
                         }
                         catch (System.Exception)
@@ -91,13 +69,15 @@ namespace Exercicios_arrays
                 {
                     System.Console.WriteLine("2. Ler um array com 10 inteiros e mostrar os números na ordem direta e inversa a que foram lidos");
                     var list = new int[10];
+                    var input = "";
         
                     for (int i = 0; i < 10; i++) 
                     {
+                        Console.Write($"Digite o {i+1}º número: ");
+                        input = Console.ReadLine();
                         try
                         {
-                            Console.Write($"Digite o {i+1}º número: ");
-                            list[i] = Int32.Parse(Console.ReadLine());
+                            list[i] = Int32.Parse(input);
                         }
                         catch (System.Exception)
                         {
@@ -132,13 +112,15 @@ namespace Exercicios_arrays
                     var listA = new int[10];
                     bool searchResult = false;
                     int? searchNumber = null;
+                    var input = "";
                                             
                     for (int i = 0; i < 10; i++) 
                     {
+                        Console.Write($"Digite o número {i+1}/10: ");
+                        input = Console.ReadLine();
                         try
                         {
-                            Console.Write($"Digite o {i+1}º número: ");
-                            listA[i] = Int32.Parse(Console.ReadLine());
+                            listA[i] = Int32.Parse(input);
                         }
                         catch (System.Exception)
                         {
@@ -189,13 +171,16 @@ namespace Exercicios_arrays
                     var listA = new int[10];
                     var listB = new int[10];
                     bool areEquals = true;
+                    var inputA = "";
+                    var inputB = "";
  
                     for (int i = 0; i < 10; i++) 
                     {
+                        Console.Write($"Digite o número {i+1}/10 da lista A: ");
+                        inputA = Console.ReadLine();
                         try
                         {
-                            Console.Write($"Digite o {i+1}º número da lista A: ");
-                            listA[i] = Int32.Parse(Console.ReadLine());
+                            listA[i] = Int32.Parse(inputA);
                         }
                         catch (System.Exception)
                         {
@@ -207,10 +192,11 @@ namespace Exercicios_arrays
 
                     for (int i = 0; i < 10; i++) 
                     {
+                        Console.Write($"Digite o número {i+1}/10 da lista B: ");
+                        inputB = Console.ReadLine();
                         try
                         {
-                            Console.Write($"Digite o {i+1}º número da lista B: ");
-                            listB[i] = Int32.Parse(Console.ReadLine());
+                            listB[i] = Int32.Parse(inputB);
                         }
                         catch (System.Exception)
                         {
@@ -241,24 +227,25 @@ namespace Exercicios_arrays
                 }
 
 
+
                 static void exercicio5()
                 {
                     System.Console.WriteLine("Leia um array A com 15 elementos, e calcule a média aritmética, em seguida, diga quantos dos elementos lidos estão abaixo, acima e na média.");
-                    var list = new double[15];
-                    var number = 0.0;
-                    double sum = 0;
+                    var list = new int[15];
+                    var input = "";
+                    int sum = 0;
                     int onAverage = 0;
                     int aboveAverage = 0;
                     int underAverage = 0;
 
                     for (int i = 0; i < 15; i++)
                     {
+                        Console.Write($"Digite o número {i+1}/15 da lista: ");
+                        input = Console.ReadLine();
                         try
                         {
-                            Console.Write($"Digite o {i+1}º número da lista: ");
-                            number = double.Parse(Console.ReadLine());
-                            list[i] = number;
-                            sum += number;
+                            list[i] = Int32.Parse(input);
+                            sum += list[i];
                         }
                         catch (System.Exception)
                         {
@@ -267,7 +254,7 @@ namespace Exercicios_arrays
                         }
                         
                     }
-                    double average = sum/15;
+                    int average = sum/15;
 
                     foreach (var item in list)
                     {
@@ -297,13 +284,25 @@ namespace Exercicios_arrays
                     var listA = new int[12];
                     var listB = new int[12];
                     var listC = new int[12];
+                    var inputA = "";
+                    var inputB = "";
  
                     for (int i = 0; i < 12; i++)
                     {
-                        Console.Write($"Digite o {i+1}º número da lista A: ");
-                        listA[i] = Int32.Parse(Console.ReadLine());
-                        Console.Write($"Digite o {i+1}º número da lista B: ");
-                        listB[i] = Int32.Parse(Console.ReadLine());
+                        Console.Write($"Digite o número {i+1}/12 da lista A: ");
+                        inputA = Console.ReadLine();
+                        Console.Write($"Digite o número {i+1}/12 da lista B: ");
+                        inputB = Console.ReadLine();
+                        try
+                        {
+                            listA[i] = Int32.Parse(inputA);
+                            listB[i] = Int32.Parse(inputB);
+                        }
+                        catch (System.Exception)
+                        {
+                            System.Console.WriteLine("Erro. Um item inválido foi inserido. Insira apenas números inteiros.");
+                            i--;
+                        }
                     }
 
                     Array.Sort(listA);
@@ -337,9 +336,8 @@ namespace Exercicios_arrays
                     }
                     System.Console.WriteLine("");
                 }
-
                 System.Console.WriteLine("APLICAÇÃO ENCERRADA.");
-            }   
+
         }
     }
 }
